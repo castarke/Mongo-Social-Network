@@ -16,7 +16,7 @@ const userController = {
       const dbUserData = await User.findOne({ _id: req.params.userId })
         .select('-__v')
         .populate('friends')
-        .populate('Thought');
+        .populate('thoughts');
 
       if (!dbUserData) {
         return res.status(404).json({ message: 'User not found with that id' });

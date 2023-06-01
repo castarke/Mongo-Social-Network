@@ -28,13 +28,13 @@ const thoughtController = {
     try {
       const dbThoughtData = await Thought.create(req.body);
       const dbUserData = await User.findOneAndUpdate(
-        { _id: req.params.userId },
+        { username: dbThoughtData.username },
         { $push: { thoughts: dbThoughtData._id } },
         { new: true }
       );
-      // if (!dbUserData) {
-      //   return res.status(404).json({ message: 'Thought was created, but no user found with this id' });
-      // }
+      if (!dbUserData) {
+        return res.status(404).json({ message: 'Thought was created, but no user found with this id' });
+      }
       res.json({ message: 'Thought was created' });
     } catch (err) {
       console.log(err);
@@ -84,9 +84,11 @@ const thoughtController = {
     try {
       const dbThoughtData = await Thought.findOneAndUpdate(
         { _id: req.params.thoughtId },
-        { $addToSet: { reaction: req.body } },
+        { $addToSet: { reactions: req.body } },
         { runValidators: true, new: true }
       );
+      console.log(req.body)
+      debugger
       if (!dbThoughtData) {
         return res.status(404).json({ message: 'No thought with this id' });
       }
@@ -103,7 +105,7 @@ const thoughtController = {
         { _id: req.params.thoughtId },
         {
           $pull: {
-            reaction: {
+            reactions: {
               reactionId: req.params.reactionId
             }
           }
