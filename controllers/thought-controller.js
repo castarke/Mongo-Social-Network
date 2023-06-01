@@ -32,9 +32,9 @@ const thoughtController = {
         { $push: { thoughts: dbThoughtData._id } },
         { new: true }
       );
-      if (!dbUserData) {
-        return res.status(404).json({ message: 'Thought was created, but no user found with this id' });
-      }
+      // if (!dbUserData) {
+      //   return res.status(404).json({ message: 'Thought was created, but no user found with this id' });
+      // }
       res.json({ message: 'Thought was created' });
     } catch (err) {
       console.log(err);
@@ -70,9 +70,9 @@ const thoughtController = {
         { $pull: { thoughts: req.params.thoughtId } },
         { new: true }
       );
-      if (!dbUserData) {
-        return res.status(404).json({ message: 'Thought was created, but user not found with this id' });
-      }
+      // if (!dbUserData) {
+      //   return res.status(404).json({ message: 'Thought was deleted, but user not found with this id' });
+      // }
       res.json({ message: 'Thought was successfully deleted' });
     } catch (err) {
       console.log(err);
