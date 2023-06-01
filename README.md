@@ -21,7 +21,7 @@
 ## Installation
   You will need to install Mongodb, mongoose,and express. It would be helpfull to install nodemon to help from having to restart the server after changes were made. 
 ## Usage
-  Insomnia Test Video: 
+  Insomnia Test Video: https://drive.google.com/file/d/1pKp86RLwCXSvlSb1QkyC83VyaFpVx90P/view
   
  ## License 
 
