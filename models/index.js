@@ -1,3 +1,5 @@
+// exporting user and thought
+
 const User = require('./User');
 const Thought = require('./Thought')
 

@@ -1,6 +1,6 @@
 const {Schema, Types} = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
-
+// creating the info that the reaction includes
 const reactionSchema = new Schema(
     {
         reactionId: {

@@ -1,5 +1,6 @@
 const { Thought, User } = require('../models');
 
+// get all thoughts
 const thoughtController = {
   getThought: async function (req, res) {
     try {
@@ -10,7 +11,7 @@ const thoughtController = {
       res.status(500).json(err);
     }
   },
-
+// get a single thought
   getSingleThought: async function (req, res) {
     try {
       const dbThoughtData = await Thought.findOne({ _id: req.params.thoughtId });
@@ -23,7 +24,7 @@ const thoughtController = {
       res.status(500).json(err);
     }
   },
-
+// uses post route,creating a thought
   createThought: async function (req, res) {
     try {
       const dbThoughtData = await Thought.create(req.body);
@@ -41,7 +42,7 @@ const thoughtController = {
       res.status(500).json(err);
     }
   },
-
+//uses put route, updating a thought
   updateThought: async function (req, res) {
     try {
       const dbThoughtData = await Thought.findOneAndUpdate(
@@ -58,7 +59,7 @@ const thoughtController = {
       res.status(500).json(err);
     }
   },
-
+// uses delete route, deleting thought
   deleteThought: async function (req, res) {
     try {
       const dbThoughtData = await Thought.findOneAndDelete({ _id: req.params.thoughtId });
@@ -70,16 +71,13 @@ const thoughtController = {
         { $pull: { thoughts: req.params.thoughtId } },
         { new: true }
       );
-      // if (!dbUserData) {
-      //   return res.status(404).json({ message: 'Thought was deleted, but user not found with this id' });
-      // }
       res.json({ message: 'Thought was successfully deleted' });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
     }
   },
-
+// uses post route, adding reaction
   addReaction: async function (req, res) {
     try {
       const dbThoughtData = await Thought.findOneAndUpdate(
@@ -98,7 +96,7 @@ const thoughtController = {
       res.status(500).json(err);
     }
   },
-
+//uses  delete route, deleting reaction
   removeReaction: async function (req, res) {
     try {
       const dbThoughtData = await Thought.findOneAndUpdate(

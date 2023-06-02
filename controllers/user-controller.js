@@ -1,5 +1,6 @@
 const { User, Thought } = require('../models');
 
+// get all users
 const userController = {
   getUsers: async (req, res) => {
     try {
@@ -10,7 +11,7 @@ const userController = {
       res.status(500).json(err);
     }
   },
-
+// get single user
   getSingleUser: async (req, res) => {
     try {
       const dbUserData = await User.findOne({ _id: req.params.userId })
@@ -28,7 +29,7 @@ const userController = {
       res.status(500).json(err);
     }
   },
-
+// uses post route, create user
   createUser: async (req, res) => {
     try {
       const dbUserData = await User.create(req.body);
@@ -38,7 +39,7 @@ const userController = {
       res.status(500).json(err);
     }
   },
-
+// uses put route, update user info
   updateUser: async (req, res) => {
     try {
       const dbUserData = await User.findOneAndUpdate(
@@ -57,7 +58,7 @@ const userController = {
       res.status(500).json(err);
     }
   },
-
+// uses delete route, delete user aand thoughts 
   deleteUser: async (req, res) => {
     try {
       const dbUserData = await User.findOneAndDelete({ _id: req.params.userId });
@@ -73,7 +74,7 @@ const userController = {
       res.status(500).json(err);
     }
   },
-
+// uses post route, add user as a friend
   addFriend: async (req, res) => {
     try {
       const dbUserData = await User.findByIdAndUpdate(
@@ -92,7 +93,7 @@ const userController = {
       res.status(500).json(err);
     }
   },
-
+// uses delete route, deletes user as a friend
   removeFriend: async (req, res) => {
     try {
       const dbUserData = await User.findOneAndUpdate(

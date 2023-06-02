@@ -1,5 +1,5 @@
 const {Schema, model} = require('mongoose');
-
+// creating the info that the user uses 
 const userSchema = new Schema(
     {
         username: {
